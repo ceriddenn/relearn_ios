@@ -1,6 +1,6 @@
 {
   "expo": {
-    "scheme": "acme",
+    "scheme": "relearn",
     "userInterfaceStyle": "automatic",
     "orientation": "default",
     "web": {
@@ -16,6 +16,15 @@
       ]
     ],
     "name": "relearn",
-    "slug": "relearn"
+    "slug": "relearn",
+    "extra": {
+      "eas": {
+        "projectId": "9f867307-b537-480e-94a2-c867f969865b"
+      }
+    },
+    "owner": "relearn",
+    "ios": {
+      "bundleIdentifier": "com.finneancarmichael.relearn"
+    }
   }
 }
