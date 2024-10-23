@@ -3,6 +3,7 @@
     "scheme": "relearn",
     "userInterfaceStyle": "automatic",
     "orientation": "default",
+    "version": "1.0.8",
     "web": {
       "output": "static",
       "bundler": "metro"
@@ -13,9 +14,12 @@
         {
           "origin": "https://n"
         }
+      ],
+      [
+        "expo-secure-store"
       ]
     ],
-    "name": "relearn",
+    "name": "ReLearn",
     "slug": "relearn",
     "extra": {
       "eas": {

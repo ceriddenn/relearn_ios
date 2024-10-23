@@ -1,11 +1,10 @@
-import { ActivityIndicator, View } from 'react-native';
+import React from 'react'
+import { Text } from 'react-native'
 
-const StartPage = () => {
+const Index = () => {
   return (
-    <View style={{ flex: 1, justifyContent: 'center' }} className='bg-black'>
-      <ActivityIndicator size="large" color="#0000ff" />
-    </View>
-  );
-};
+    <Text className='text-red-500'>Loading...</Text>
+  )
+}
 
-export default StartPage;
+export default Index

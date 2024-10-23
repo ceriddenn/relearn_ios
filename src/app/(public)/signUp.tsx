@@ -1,15 +1,12 @@
 import React from 'react'
 import { ActivityIndicator, Image, Keyboard, Pressable, Text, TouchableWithoutFeedback, View } from 'react-native'
-import { LockKeyholeIcon, MailIcon, PhoneIcon } from 'lucide-react-native';
-import { Input } from '../../components/input'
-import { Checkbox } from '@/components/checkbox';
-import { useSignUp } from '@clerk/clerk-expo'
+import { PhoneIcon } from 'lucide-react-native';
 import { OtpInput } from "react-native-otp-entry";
 import { useRouter } from 'expo-router';
-import { showToast } from '@/lib/toastConfig';
-import { useOAuth } from '@clerk/clerk-expo'
-import * as Linking from 'expo-linking'
-import * as WebBrowser from 'expo-web-browser'
+import GoogleOauth from '@/components/auth/google';
+import MetaOauth from '@/components/auth/meta';
+import LocalAuthSignup from '@/components/auth/localSignup';
+
 
 const SignUp = () => {
     // sign up state
@@ -56,62 +53,7 @@ const SignUp = () => {
                                 <Text className='text-xl text-gray-400'>To get started, create an account.</Text>
 
                             </View>
-                            <View className='flex mt-6 gap-6'>
-                                <View className='flex gap-2'>
-                                    <Text className='font-semibold text-md text-white'>Name</Text>
-
-                                    <View className="flex-row items-center px-4 py-1 border-[1.5px] border-gray-600 rounded-lg gap-3 ">
-                                        <MailIcon color="#4b5563" size={25} />
-                                        <Input
-                                            placeholder='Enter your name'
-                                            className='w-full pr-12'
-                                        />
-                                    </View>
-
-                                </View>
-                                <View className='flex gap-2'>
-                                    <Text className='font-semibold text-md text-white'>Email</Text>
-
-                                    <View className="flex-row items-center px-4 py-1 border-[1.5px] border-gray-600 rounded-lg gap-3 ">
-                                        <MailIcon color="#4b5563" size={25} />
-                                        <Input
-                                            onChangeText={(v) => setEmail(v)}
-                                            placeholder='Enter your email'
-                                            className='w-full pr-12'
-                                        />
-                                    </View>
-
-                                </View>
-                                <View className='flex gap-2'>
-                                    <Text className='font-semibold text-md text-white'>Password</Text>
-
-                                    <View className="flex-row items-center px-4 py-1 border-[1.5px] border-gray-600 rounded-lg gap-3 ">
-                                        <LockKeyholeIcon color="#4b5563" size={25} />
-                                        <Input
-                                            onChangeText={(v) => setPassword(v)}
-                                            placeholder='********'
-                                            secureTextEntry={true}
-                                            className='w-full pr-12'
-                                        />
-                                    </View>
-
-                                </View>
-                            </View>
-                            <View className='flex flex-row justify-between mt-5'>
-                                <View className='flex flex-row gap-2 items-center'>
-                                    <Checkbox checked={tos} onCheckedChange={setTos} className='text-white' />
-                                    <Text className='font-medium text-md text-gray-400'>I accept the TOS</Text>
-                                </View>
-                                {/*<Text className='font-medium text-md text-blue-600 '>Forgot password</Text>*/}
-
-                            </View>
-                            <View className='mt-12'>
-                                <Pressable
-                                    onPress={onSignupPress}
-                                    className='border-[1.5px] rounded-lg bg-[#9d4edd] border-[#9d4edd] items-center py-2'>
-                                    <Text className='text-white font-medium text-lg'>Sign Up</Text>
-                                </Pressable>
-                            </View>
+                            <LocalAuthSignup />
 
                             <View className='mt-4'>
                                 <Text className='text-gray-600 font-medium text-md'>-------------- Or sign up with --------------</Text>
@@ -121,12 +63,8 @@ const SignUp = () => {
                                 <Pressable className='rounded-lg bg-gray-900 shadow-sm py-3 px-3'>
                                     <PhoneIcon color={'white'} width={30} height={30} />
                                 </Pressable>
-                                <Pressable className='rounded-lg bg-gray-900 shadow-sm py-3 px-3'>
-                                    <Image source={require('assets/images/google1.png')} className='w-9 h-9' />
-                                </Pressable>
-                                <Pressable className='rounded-lg bg-gray-900 shadow-sm py-3 px-3'>
-                                    <Image source={require('assets/images/snap1.png')} className='w-9 h-9' />
-                                </Pressable>
+                                <GoogleOauth />
+                                <MetaOauth />
                             </View>
 
                             <View className='flex mt-12 mx-auto flex flex-row'>
